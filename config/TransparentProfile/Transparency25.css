@@ -1,0 +1,17 @@
+.profile_header_bg_texture {
+    background-color: rgba(0,0,0,0.25) !important
+}
+
+.profile_content.has_profile_background,
+.profile_content {
+    background-color: rgba(0,0,0,0) !important;
+    backdrop-filter: none !important;
+}
+
+.profile_rightcol {
+    background-color: rgba(0,0,0,0.25) !important;
+}
+
+.profile_customization_block {
+    background-color: rgba(0,0,0,0.25) !important;
+}

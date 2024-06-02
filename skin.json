@@ -4,7 +4,7 @@
             "Name": "Compacted Header",
             "ToolTip": "Use a more compact header bar on Steam (everything is on 1 row)",
             "Type": "CheckBox",
-            "Value": false
+            "Value": true
         },
         {
             "Name": "Wallet Visibility",
@@ -404,6 +404,15 @@
             "Statement": {
                 "If": "Wallet Visibility",
                 "Equals": true,
+            "MatchRegexString": "^https://steamcommunity.com/id*",
+            "TargetCss": "config/TransparentProfile/Transparency25.css"
+            }
+        },
+        {
+            "MatchRegexString": "^Account.",
+            "Statement": {
+                "Equals": true,
+                "If": "Wallet Visibility",
                 "True": {
                     "TargetCss": "config/WalletVisibility.css"
                 },
