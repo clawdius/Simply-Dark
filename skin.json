@@ -4,25 +4,25 @@
             "Name": "Compacted Header",
             "ToolTip": "Use a more compact header bar on Steam (everything is on 1 row)",
             "Type": "CheckBox",
-            "Value": true
+            "Value": false
         },
         {
             "Name": "Wallet Visibility",
             "ToolTip": "Hide wallet amount from user menu",
             "Type": "CheckBox",
-            "Value": false
+            "Value": true
         },
         {
             "Name": "URL Visibility",
             "ToolTip": "Hide URL bar when browsing inside steam",
             "Type": "CheckBox",
-            "Value": false
+            "Value": true
         },
         {
             "Name": "What's New Visibility",
             "ToolTip": "Hide 'Whats New' on library page",
             "Type": "CheckBox",
-            "Value": false
+            "Value": true
         }
     ],
     "GlobalsColors": [
@@ -400,13 +400,8 @@
             "TargetCss": "overlay/Browser.css"
         },
         {
-            "MatchRegexString": "^Account.",
-            "Statement": {
-                "If": "Wallet Visibility",
-                "Equals": true,
             "MatchRegexString": "^https://steamcommunity.com/id*",
             "TargetCss": "config/TransparentProfile/Transparency25.css"
-            }
         },
         {
             "MatchRegexString": "^Account.",
