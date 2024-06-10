@@ -1,30 +1,64 @@
 {
-    "Configuration": [
-        {
-            "Name": "Compacted Header",
-            "ToolTip": "Use a more compact header bar on Steam (everything is on 1 row)",
-            "Type": "CheckBox",
-            "Value": false
+    "Conditions": {
+        "Compacted Header": {
+            "description": "Use a more compact header bar on Steam (everything is on 1 row)",
+            "default": "Normal",
+            "values": {
+                "Normal": {
+                    "TargetCss": {
+                        "affects": ["^Steam$"], "src": "headers/NormalHeader.css"
+                    },
+                    "TargetJs": {
+                        "affects": ["^Steam$"], "src": "headers/NormalHeader.js"
+                    }
+                },
+                "Compact": {
+                    "TargetCss": {
+                        "affects": ["^Steam$"], "src": "headers/CompactHeader.css"
+                    },
+                    "TargetJs": {
+                        "affects": ["^Steam$"], "src": "headers/CompactHeader.js"
+                    }
+                }
+            }
         },
-        {
-            "Name": "Wallet Visibility",
-            "ToolTip": "Hide wallet amount from user menu",
-            "Type": "CheckBox",
-            "Value": false
+        "Wallet Visibility": {
+            "description": "Show wallet balance on the top right menu",
+            "default": "Show",
+            "values": {
+                "Show": {},
+                "Hide": {
+                    "TargetCss": {
+                        "affects": ["^Account", "^Steam$"], "src": "config/WalletVisibility.css"
+                    }
+                }
+            }
         },
-        {
-            "Name": "URL Visibility",
-            "ToolTip": "Hide URL bar when browsing inside steam",
-            "Type": "CheckBox",
-            "Value": false
+        "URL Visibility": {
+            "description": "Show URL bar when browsing inside Steam",
+            "default": "Show",
+            "values": {
+                "Show": {},
+                "Hide": {
+                    "TargetCss": {
+                        "affects": ["^Steam$"], "src": "config/URLBarVisibility.css"
+                    }
+                }
+            }
         },
-        {
-            "Name": "What's New Visibility",
-            "ToolTip": "Hide 'Whats New' on library page",
-            "Type": "CheckBox",
-            "Value": false
+        "What's New Visibility": {
+            "description": "Show news and updates on library from the games you own",
+            "default": "Show",
+            "values": {
+                "Show": {},
+                "Hide": {
+                    "TargetCss": {
+                        "affects": ["^Steam$"], "src": "config/WhatsNewVisibility.css"
+                    }
+                }
+            }
         }
-    ],
+    },
     "GlobalsColors": [
         {
             "ColorName": "--color-light",
@@ -292,44 +326,6 @@
         },
         {
             "MatchRegexString": "^Steam$",
-            "Statement": [
-                {
-                    "Equals": true,
-                    "False": {
-                        "TargetCss": "headers/NormalHeader.css",
-                        "TargetJs": "headers/NormalHeader.js"
-                    },
-                    "If": "Compacted Header",
-                    "True": {
-                        "TargetCss": "headers/CompactHeader.css",
-                        "TargetJs": "headers/CompactHeader.js"
-                    }
-                },
-                {
-                    "Equals": true,
-                    "False": {},
-                    "If": "Wallet Visibility",
-                    "True": {
-                        "TargetCss": "config/WalletVisibility.css"
-                    }
-                },
-                {
-                    "Equals": true,
-                    "False": {},
-                    "If": "URL Visibility",
-                    "True": {
-                        "TargetCss": "config/URLBarVisibility.css"
-                    }
-                },
-                {
-                    "Equals": true,
-                    "False": {},
-                    "If": "What's New Visibility",
-                    "True": {
-                        "TargetCss": "config/WhatsNewVisibility.css"
-                    }
-                }
-            ],
             "TargetCss": "Steam.css"
         },
         {
@@ -404,17 +400,6 @@
         {
             "MatchRegexString": "OverlayBrowser_Browser",
             "TargetCss": "overlay/Browser.css"
-        },
-        {
-            "MatchRegexString": "^Account.",
-            "Statement": {
-                "If": "Wallet Visibility",
-                "Equals": true,
-                "True": {
-                    "TargetCss": "config/WalletVisibility.css"
-                },
-                "False": {}
-            }
         }
     ],
     "Steam-WebKit": "webkit/webkit.css",
@@ -437,5 +422,5 @@
         "Sleek",
         "Compact"
     ],
-    "version": "1.2.5"
+    "version": "1.3"
 }
